@@ -282,3 +282,43 @@ Totals
 - 155 sprites
 - 32 sfx
 - 0 music
+
+## VN Bits
+- Least priority, drop if low on time
+
+Small talking segments between missions. Probably just lumi talking to enemy CO of the next mission.
+
+Text box at the bottom to contain the speech, with a small label spot at it's top left to hold name of current speaker.
+CO portrait holders on left and right for both participants. Reuse the CO portraits from the combat animation bit here.
+
+The things they say don't really need to make any sense at all, I don't know the invaders very well outside Lumi anyway. Just grab random things from their Twitter probably.
+
+Ideas for topics of discussion:
+- Jelly would just make "awawawawawa" noises and Lumi would act baby crazy, then they fight for some reason.
+- Ember would say she burned down Lumi's second kitchen, this would enrage Lumi.
+- Dizzy would act disinterested and deny Lumi's advances, creating a self defense situation.
+
+### Asset Summary
+Sprites
+- 1 Full screen UI, including portrait holders and text box all in one
+- Reuse font image from tactical map
+- Reuse CO portrats from combat animations
+
+---
+SFX
+- At most, a light noise of some kind to play as the letters get scrolled in, optional.
+
+---
+Music
+- 1 BGM track sould suffice for all the conversations.
+
+---
+Writing
+- 4-8 text boxes worth of text per opponent
+
+---
+Totals
+- 1 sprite
+- 1 sfx
+- 1 music track
+- 24 text boxes max
