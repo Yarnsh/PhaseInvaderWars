@@ -179,6 +179,9 @@ During an enemy turn movement and battle animations should play, but the cursor 
 
 ### Asset Summary
 - 4 sprites for map tiles
+- 8 sprites for HQs and factories
+  - 1 HQ sprite per army
+  - 1 factory sprite per army
 - 160 unit sprites total
   - 10 sprites per unit per army
     - 2 x 4 for 2 frame walk cycle in each direction
@@ -187,6 +190,6 @@ During an enemy turn movement and battle animations should play, but the cursor 
 - 1 sprite for menu cursor
 - 1 font sheet for text
 
-168 sprites total
+176 sprites total
 
 > TODO: Figure out what sound effects and music we need here
