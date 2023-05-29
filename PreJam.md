@@ -215,3 +215,70 @@ Totals
 - 176 sprites
 - 7 sfx
 - 5 music
+
+## Combat Animation
+- Second priority, the prettiest part and gives the barebones combat a bit of flavor.
+
+At start takes unit types, unit strengths, and tile types of both sides to render the battle and also to calculate the effects.
+Effect calculation is needed to render properly, but for the tactical map it should be calculated on its own, as it is useful to check
+ without an animation for AI stuff. No user input does anything during these which simplifies things.
+
+Attacking unit rendered on the left side, defending unit on the right.
+A half screen static background of the attacker tile on the left, and one of the defender tile on the right.
+Top corners will have CO portraits, start in neutral expression, after damage is done switch to sad for whoever is lower strength, and happy to the other.
+If a unit is destroyed outright, set the survivor to very happy and loser to very sad. 1 instance of a unit sprite drawn per 2 strength (rounding up to a multiple of 2).
+Start with attacker unit sprites running in from off screen, defender units idling where they are.
+Attacker will play shooting animation first, defender second (unless they are destroyed already).
+Play bullet impact animation on other side while firing.
+
+When strength goes down due to combat play death animation for a unit if the amount of units on screen should be reduced.
+
+---
+
+Damage calculation for a single side:
+
+`(Base Damage vs Given Unit) * (Unit Strength) * (Defender Tile Defense)`
+
+First run this calculation for the attacker and reduce defender strength by the result.
+Secondly run this for the defender with their new strength (if they are alive) and reduce attacker strength by the result.
+
+### Asset Summary
+Sprites
+- 16 idle frames
+  - 1 frame idle animation per army per unit
+- 32 shooting frames
+  - 2 frame firing animation per army per unit
+- 16 death frames
+  - 1 frame death animation per army per unit
+- 32 running frames
+  - 2 frame running animation per army per unit
+- 32 shot impact frames
+  - 2 frame impact animation per army per unit
+  - Can likely reuse some of these between units
+- 20 CO portraits
+  - 5 expressions per CO
+- 6 backgrounds
+  - 1 for each type of tile
+- 1 UI border to hold portrait and such
+- Reuse font image from tactical map
+
+---
+SFX
+- Reuse "Marching" "Engine" and "Car" or whatever from tactical map for units walking in
+- 16 "Shooting" sfx
+  - 1 per unit per army
+  - Can probably reuse between units somewhat
+  - No impact sfx, it will be thought to be included in the shoot noise
+- 16 "Death" sfx
+  - 1 per unit per army
+  - Can probably reuse between units somewhat
+
+---
+Music
+- Let whatever track is playing in the tactical map continue playing
+
+---
+Totals
+- 155 sprites
+- 32 sfx
+- 0 music
