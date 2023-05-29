@@ -178,6 +178,7 @@ Testing this for effectiveness would take forever, so as long as it looks even r
 During an enemy turn movement and battle animations should play, but the cursor and tile overlays and such have no reason to be shown.
 
 ### Asset Summary
+Sprites
 - 4 sprites for map tiles
 - 8 sprites for HQs and factories
   - 1 HQ sprite per army
@@ -190,6 +191,27 @@ During an enemy turn movement and battle animations should play, but the cursor 
 - 1 sprite for menu cursor
 - 1 font sheet for text
 
-176 sprites total
+---
 
-> TODO: Figure out what sound effects and music we need here
+SFX
+- "Marching" sfx for infantry movement
+- "Engine" sfx for tank movement
+- "Rolling" or "Car" like sfx for anti-tank movement
+- "Select" bloop sfx
+- "Cancel" bloop sfx
+- "Move Cursor" light click sfx
+- "Build Unit" mechanical rustling sfx
+
+---
+
+Music
+- 3 battle themes, one per map
+- Victory theme (short)
+- Losing theme (short)
+
+---
+Totals
+
+- 176 sprites
+- 7 sfx
+- 5 music
