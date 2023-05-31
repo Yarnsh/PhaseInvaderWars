@@ -1,3 +1,10 @@
+## Quick Reference of Tasks
+- Modify SFX and music tracks to fit
+- Create sprites
+- Create animation files for everything
+- Code everything
+- Write terrible dialogue
+
 # Pre-jam design
 Overall idea is an Advance Wars lite, Lumi as player CO, new invaders as enemy COs.
 Therefore 3 levels, optimally with short VN like segments between them for a bit of character.
