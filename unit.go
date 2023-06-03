@@ -68,6 +68,18 @@ func (u Unit) CalculateDamage(o Unit, tacmap TacticalMap) (float64, float64) {
 	return u_str, o_str
 }
 
+func (u Unit) GetMoves() int {
+	switch u.which {
+	case "infantry":
+		return 3
+	case "tank":
+		return 6
+	case "antitank":
+		return 3
+	}
+	return 0
+}
+
 func nameToType(name string) int {
 	switch name {
 	case "infantry":

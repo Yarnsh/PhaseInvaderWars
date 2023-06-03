@@ -3,6 +3,7 @@ package main
 import (
     "github.com/hajimehoshi/ebiten/v2"
     "github.com/Yarnsh/hippo/input"
+    "fmt"
 )
 
 const (
@@ -13,6 +14,10 @@ const (
 type TacticalGame struct {
     time float64
     player_input input.InputActionHandler
+    mode int
+
+    selected_unit Unit
+    selected_factory Tile
 
     tacmap TacticalMap
     p1_units []Unit
@@ -24,7 +29,6 @@ type TacticalGame struct {
 }
 
 func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler) TacticalGame {
-    // TODO
     result := TacticalGame{
         tacmap: tacmap,
         player_input: player_input,
@@ -33,41 +37,64 @@ func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler) 
     return result
 }
 func (g *TacticalGame) Update() error {
-    // TODO
     g.time += 1.0/60.0
+    fmt.Println(g.mode)
 
-    if g.player_input.IsActionJustPressed("left") {
-        g.left_pressed = g.time + CURSOR_DELAY
-        g.MoveCursor(-1, 0)
-    }
-    if g.player_input.IsActionJustPressed("right") {
-        g.right_pressed = g.time + CURSOR_DELAY
-        g.MoveCursor(1, 0)
-    }
-    if g.player_input.IsActionJustPressed("up") {
-        g.up_pressed = g.time + CURSOR_DELAY
-        g.MoveCursor(0, -1)
-    }
-    if g.player_input.IsActionJustPressed("down") {
-        g.down_pressed = g.time + CURSOR_DELAY
-        g.MoveCursor(0, 1)
+    if g.mode == 0 || g.mode == 1 {
+        if g.player_input.IsActionJustPressed("left") {
+            g.left_pressed = g.time + CURSOR_DELAY
+            g.MoveCursor(-1, 0)
+        }
+        if g.player_input.IsActionJustPressed("right") {
+            g.right_pressed = g.time + CURSOR_DELAY
+            g.MoveCursor(1, 0)
+        }
+        if g.player_input.IsActionJustPressed("up") {
+            g.up_pressed = g.time + CURSOR_DELAY
+            g.MoveCursor(0, -1)
+        }
+        if g.player_input.IsActionJustPressed("down") {
+            g.down_pressed = g.time + CURSOR_DELAY
+            g.MoveCursor(0, 1)
+        }
+
+        if g.player_input.ActionPressedDuration("left") > 0 && g.time >= g.left_pressed {
+            g.left_pressed = g.time + CURSOR_DELAY2
+            g.MoveCursor(-1, 0)
+        }
+        if g.player_input.ActionPressedDuration("right") > 0 && g.time >= g.right_pressed {
+            g.right_pressed = g.time + CURSOR_DELAY2
+            g.MoveCursor(1, 0)
+        }
+        if g.player_input.ActionPressedDuration("up") > 0 && g.time >= g.up_pressed {
+            g.up_pressed = g.time + CURSOR_DELAY2
+            g.MoveCursor(0, -1)
+        }
+        if g.player_input.ActionPressedDuration("down") > 0 && g.time >= g.down_pressed {
+            g.down_pressed = g.time + CURSOR_DELAY2
+            g.MoveCursor(0, 1)
+        }
     }
 
-    if g.player_input.ActionPressedDuration("left") > 0 && g.time >= g.left_pressed {
-        g.left_pressed = g.time + CURSOR_DELAY2
-        g.MoveCursor(-1, 0)
+    if g.mode == 0 {
+        if g.player_input.IsActionJustPressed("accept") {
+            for _, unit := range g.p1_units {
+                if unit.x == g.cx && unit.y == g.cy {
+                    if unit.actions > 0 {
+                        g.mode = 1
+                        g.selected_unit = unit
+                    }
+                    return nil
+                }
+            }
+        }
     }
-    if g.player_input.ActionPressedDuration("right") > 0 && g.time >= g.right_pressed {
-        g.right_pressed = g.time + CURSOR_DELAY2
-        g.MoveCursor(1, 0)
-    }
-    if g.player_input.ActionPressedDuration("up") > 0 && g.time >= g.up_pressed {
-        g.up_pressed = g.time + CURSOR_DELAY2
-        g.MoveCursor(0, -1)
-    }
-    if g.player_input.ActionPressedDuration("down") > 0 && g.time >= g.down_pressed {
-        g.down_pressed = g.time + CURSOR_DELAY2
-        g.MoveCursor(0, 1)
+
+    if g.mode == 1 || g.mode == 2 {
+        if g.player_input.IsActionJustPressed("cancel") {
+            g.mode = 0
+            return nil
+        }
     }
 
     return nil
@@ -85,24 +112,33 @@ func (g *TacticalGame) Draw(screen *ebiten.Image) {
 
     // figure out if the cursor can click a thing right now
     hover := false
-    found := false
-    for _, unit := range g.p1_units {
-        if unit.x == g.cx && unit.y == g.cy {
-                found = true
-            if unit.actions > 0 {
-                hover = true
+    if g.mode == 0 {
+        found := false
+        for _, unit := range g.p1_units {
+            if unit.x == g.cx && unit.y == g.cy {
+                    found = true
+                if unit.actions > 0 {
+                    hover = true
+                }
+                break
             }
-            break
         }
-    }
-    if !found && g.tacmap.tiles[g.cx][g.cy].p1_fac {
-        hover = true
+        if !found && g.tacmap.tiles[g.cx][g.cy].p1_fac {
+            hover = true
+        }
     }
 
     if hover {
         ui_anims["cursor_hover"].Draw(screen, float64(g.cx) * tileSizeF + (tileSizeF / 2.0), float64(g.cy) * tileSizeF + tileSizeF, 1.0, g.time)
     } else {
         ui_anims["cursor"].Draw(screen, float64(g.cx) * tileSizeF + (tileSizeF / 2.0), float64(g.cy) * tileSizeF + tileSizeF, 1.0, g.time)
+    }
+
+    if g.mode == 1 {
+        moves := g.tacmap.GetMoves(g.selected_unit)
+        for _, node := range moves.nodes {
+            ui_anims["walk_tile"].Draw(screen, float64(node.pos.X) * tileSizeF + (tileSizeF / 2.0), float64(node.pos.Y) * tileSizeF + tileSizeF, 1.0, g.time)
+        }
     }
 }
 func (g *TacticalGame) Layout(outsideWidth, outsideHeight int) (int, int) {

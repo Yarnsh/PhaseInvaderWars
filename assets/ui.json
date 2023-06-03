@@ -21,6 +21,26 @@
 				"0.1": 1,
 				"0.2": 0
 			}
+		},
+		"walk_tile": {
+			"sheet_path": "cursor.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 0.2,
+			"frames": {
+				"0.0": 0
+			}
+		},
+		"attack_tile": {
+			"sheet_path": "cursor.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 0.2,
+			"frames": {
+				"0.0": 1
+			}
 		}
 	}
 }
