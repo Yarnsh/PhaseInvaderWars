@@ -153,24 +153,24 @@ func csvToTacticalMap(file_path string) TacticalMap {
     			result.tiles[x][y] = TM_
 
     		case "0.4":
-    			result.tiles[x][y] = TF0
-    		case "1.4":
     			result.tiles[x][y] = TH0
+    		case "1.4":
+    			result.tiles[x][y] = TF0
 
     		case "0.5":
-    			result.tiles[x][y] = TF1
-    		case "1.5":
     			result.tiles[x][y] = TH1
+    		case "1.5":
+    			result.tiles[x][y] = TF1
 
     		case "0.6":
-    			result.tiles[x][y] = TF2
-    		case "1.6":
     			result.tiles[x][y] = TH2
+    		case "1.6":
+    			result.tiles[x][y] = TF2
 
     		case "0.7":
-    			result.tiles[x][y] = TF3
-    		case "1.7":
     			result.tiles[x][y] = TH3
+    		case "1.7":
+    			result.tiles[x][y] = TF3
 	    	}
 		}
     }

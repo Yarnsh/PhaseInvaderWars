@@ -1,0 +1,741 @@
+{
+	"animations": {
+		"infantry_idle_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 0,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_right_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_left_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_down_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 60,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_up_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 80,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"tank_idle_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 100,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_right_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 120,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_left_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 140,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_down_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 160,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_up_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 180,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"antitank_idle_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 200,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_right_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 220,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_left_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 240,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_down_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 260,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_up_0": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 280,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+
+		
+		"infantry_idle_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 0,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_right_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_left_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_down_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 60,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_up_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 80,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"tank_idle_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 100,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_right_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 120,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_left_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 140,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_down_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 160,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_up_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 180,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"antitank_idle_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 200,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_right_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 220,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_left_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 240,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_down_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 260,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_up_1": {
+			"sheet_path": "jelly_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 280,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+
+		
+		"infantry_idle_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 0,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_right_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_left_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_down_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 60,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_up_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 80,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"tank_idle_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 100,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_right_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 120,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_left_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 140,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_down_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 160,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_up_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 180,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"antitank_idle_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 200,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_right_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 220,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_left_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 240,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_down_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 260,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_up_2": {
+			"sheet_path": "dizzy_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 280,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+
+		
+		"infantry_idle_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 0,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_right_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 20,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_left_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_down_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 60,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"infantry_up_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 80,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"tank_idle_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 100,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_right_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 120,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_left_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 140,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_down_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 160,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_up_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 180,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+
+		"antitank_idle_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 200,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_right_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 220,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_left_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 240,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_down_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 260,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_up_3": {
+			"sheet_path": "ember_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 280,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		}
+	}
+}

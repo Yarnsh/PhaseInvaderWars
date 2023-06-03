@@ -24,6 +24,7 @@ var (
     EmbeddedFileSystem embed.FS
 
     player_control input.InputActionHandler
+    ui_anims map[string]animation.Animation
 )
 
 type MetaGame struct {
@@ -35,14 +36,22 @@ func NewMetaGame() MetaGame {
     result := MetaGame{}
 
     player_control := input.NewInputActionHandler()
-    player_control.RegisterKeyboardAction("Left", ebiten.KeyLeft)
-    player_control.RegisterKeyboardAction("Right", ebiten.KeyRight)
-    player_control.RegisterKeyboardAction("Rotate", ebiten.KeyUp)
-    player_control.RegisterKeyboardAction("Fall", ebiten.KeyDown)
-    player_control.RegisterKeyboardAction("Accept", ebiten.KeyZ)
-    player_control.RegisterKeyboardAction("Cancel", ebiten.KeyX)
+    player_control.RegisterKeyboardAction("left", ebiten.KeyA)
+    player_control.RegisterKeyboardAction("right", ebiten.KeyD)
+    player_control.RegisterKeyboardAction("up", ebiten.KeyW)
+    player_control.RegisterKeyboardAction("down", ebiten.KeyS)
+    player_control.RegisterKeyboardAction("accept", ebiten.KeyN)
+    player_control.RegisterKeyboardAction("cancel", ebiten.KeyM)
 
-    result.tac_game = NewTacticalGame(tac_map_1)
+    result.tac_game = NewTacticalGame(tac_map_1, player_control)
+
+    result.tac_game.AddUnit("infantry", 7, 13, 0)
+    result.tac_game.AddUnit("tank", 7, 16, 0)
+    result.tac_game.AddUnit("antitank", 8, 15, 0)
+
+    result.tac_game.AddUnit("infantry", 23, 13, 1)
+    result.tac_game.AddUnit("tank", 25, 16, 2)
+    result.tac_game.AddUnit("antitank", 28, 15, 3)
 
     return result
 }
@@ -69,7 +78,9 @@ func main() {
     ebiten.SetWindowSize(screenWidth, screenHeight)
     ebiten.SetWindowTitle("Invader Wars")
 
+    ui_anims, _ = animation.LoadAnimationMap("assets/ui.json")
     InitTacMapData()
+    InitUnitData()
 
     game := NewMetaGame()
     if err := ebiten.RunGame(&game); err != nil {
