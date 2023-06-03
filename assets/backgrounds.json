@@ -1,0 +1,58 @@
+{
+	"animations": {
+		"plains": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0
+			}
+		},
+		"forest": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 1
+			}
+		},
+		"mountain": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 2
+			}
+		},
+		"ocean": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 3
+			}
+		},
+		"hq": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 4
+			}
+		},
+		"factory": {
+			"sheet_path": "battle_terrain.png",
+			"frame_width": 400,
+			"frame_height": 600,
+			"length": 1.0,
+			"frames": {
+				"0.0": 5
+			}
+		}
+	}
+}

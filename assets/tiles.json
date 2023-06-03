@@ -1,0 +1,112 @@
+{
+	"animations": {
+		"plains": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0
+			}
+		},
+		"forest": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 1
+			}
+		},
+		"mountain": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 2
+			}
+		},
+		"ocean": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 3
+			}
+		},
+		"hq0": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 4
+			}
+		},
+		"factory0": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 5
+			}
+		},
+		"hq1": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 6
+			}
+		},
+		"factory1": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 7
+			}
+		},
+		"hq2": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 8
+			}
+		},
+		"factory2": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 9
+			}
+		},
+		"hq3": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 10
+			}
+		},
+		"factory3": {
+			"sheet_path": "tiles.png",
+			"frame_width": 20,
+			"frame_height": 40,
+			"length": 1.0,
+			"frames": {
+				"0.0": 11
+			}
+		}
+	}
+}
