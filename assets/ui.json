@@ -1,5 +1,15 @@
 {
 	"animations": {
+		"vnbg": {
+			"sheet_path": "textbox.png",
+			"frame_width": 800,
+			"frame_height": 600,
+			"frame_offset_y": 0,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0
+			}
+		},
 		"cursor": {
 			"sheet_path": "cursor.png",
 			"frame_width": 20,

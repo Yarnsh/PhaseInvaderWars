@@ -23,15 +23,17 @@ var (
     //go:embed assets/*
     EmbeddedFileSystem embed.FS
 
-    player_control input.InputActionHandler
     ui_anims map[string]animation.Animation
     basic_font []animation.Animation
+    lumi_font []animation.Animation
+    jelly_font []animation.Animation
+    dizzy_font []animation.Animation
+    ember_font []animation.Animation
     battle_anims map[string]animation.Animation
 )
 
 type MetaGame struct {
-    // test until we get VN stuff going
-    tac_game TacticalGame
+    camp CampaignGame
 }
 
 func NewMetaGame() MetaGame {
@@ -45,26 +47,17 @@ func NewMetaGame() MetaGame {
     player_control.RegisterKeyboardAction("accept", ebiten.KeyN)
     player_control.RegisterKeyboardAction("cancel", ebiten.KeyM)
 
-    tacai := NewTacticalAI([]string{"infantry","infantry","infantry","antitank","tank"}, 2)
+    player_control.RegisterKeyboardAction("cheat0", ebiten.KeyF1)
+    player_control.RegisterKeyboardAction("cheat1", ebiten.KeyF2)
+    player_control.RegisterKeyboardAction("cheat2", ebiten.KeyF3)
 
-    result.tac_game = NewTacticalGame(tac_map_1, player_control, 1, tacai)
-
-    result.tac_game.AddUnit("infantry", 7, 13, 0)
-    result.tac_game.AddUnit("tank", 14, 16, 0)
-    result.tac_game.AddUnit("antitank", 8, 15, 0)
-
-    result.tac_game.AddUnit("infantry", 23, 13, 1)
-    result.tac_game.AddUnit("tank", 16, 16, 2)
-    result.tac_game.AddUnit("antitank", 28, 15, 3)
-
-    result.tac_game.RefreshP1()
-    result.tac_game.RefreshP2()
+    result.camp = NewCampaign(GAME_STAGES, player_control)
 
     return result
 }
 func (g *MetaGame) Update() error {
-    err := g.tac_game.Update()
-    finished, victory := g.tac_game.GetResult()
+    err := g.camp.Update()
+    finished, victory := g.camp.GetResult()
     if finished { // test until we get VN stuff going
         fmt.Println("Game Over!", victory)
         os.Exit(0)
@@ -72,7 +65,7 @@ func (g *MetaGame) Update() error {
     return err
 }
 func (g *MetaGame) Draw(screen *ebiten.Image) {
-    g.tac_game.Draw(screen)
+    g.camp.Draw(screen)
 }
 func (g *MetaGame) Layout(outsideWidth, outsideHeight int) (int, int) {
     return outsideWidth, outsideHeight
@@ -92,8 +85,24 @@ func main() {
         panic(err)
     }
     basic_font, _ = animation.NewFontAnimationMap("assets/font.png", 8, 15, 32, 23)
+    lumi_font, _ = animation.NewFontAnimationMap("assets/lumifont.png", 8, 15, 32, 23)
+    jelly_font, _ = animation.NewFontAnimationMap("assets/jellyfont.png", 8, 15, 32, 23)
+    dizzy_font, _ = animation.NewFontAnimationMap("assets/dizzyfont.png", 8, 15, 32, 23)
+    ember_font, _ = animation.NewFontAnimationMap("assets/emberfont.png", 8, 15, 32, 23)
     InitTacMapData()
     InitUnitData()
+
+    audio.Init()
+    audio.LoadSoundPath("assets/sfx/marching.wav")
+    audio.LoadSoundPath("assets/sfx/engine.wav")
+    audio.LoadSoundPath("assets/sfx/car.wav")
+    audio.LoadSoundPath("assets/sfx/rapidshoot.wav")
+    audio.LoadSoundPath("assets/sfx/boom.wav")
+    audio.LoadSoundPath("assets/sfx/death.wav")
+    audio.LoadSoundPath("assets/sfx/build.wav")
+    audio.LoadSoundPath("assets/sfx/accept.wav")
+    audio.LoadSoundPath("assets/sfx/cancel.wav")
+    audio.LoadSoundPath("assets/sfx/click.wav")
 
     game := NewMetaGame()
     if err := ebiten.RunGame(&game); err != nil {

@@ -2,6 +2,7 @@ package main
 
 import (
     "github.com/Yarnsh/hippo/animation"
+    "github.com/Yarnsh/hippo/input"
     "github.com/Yarnsh/hippo/utils"
     "strings"
     "io/fs"
@@ -124,8 +125,8 @@ func InitTacMapData() {
 	}
 
 	tac_map_1 = csvToTacticalMap("assets/maps/tac_map_1.csv")
-	tac_map_2 = tac_map_1 // JUST FOR TESTING FOR NOW
-	tac_map_3 = tac_map_1 // JUST FOR TESTING FOR NOW
+	tac_map_2 = csvToTacticalMap("assets/maps/tac_map_2.csv")
+	tac_map_3 = csvToTacticalMap("assets/maps/tac_map_3.csv")
 }
 
 func csvToTacticalMap(file_path string) TacticalMap {
@@ -185,4 +186,60 @@ func csvToTacticalMap(file_path string) TacticalMap {
     }
 
     return result
+}
+
+func CreateTacticalGame(level int, player_control input.InputActionHandler) TacticalGame {
+	if level == 0 {
+		tacai := NewTacticalAI([]string{"infantry","infantry","infantry","antitank","tank"}, 2)
+
+	    result := NewTacticalGame(tac_map_1, player_control, 1, tacai)
+
+	    result.AddUnit("infantry", 7, 13, 0)
+	    result.AddUnit("tank", 14, 16, 0)
+	    result.AddUnit("antitank", 8, 15, 0)
+
+	    result.AddUnit("infantry", 23, 13, 1)
+	    result.AddUnit("tank", 24, 16, 1)
+	    result.AddUnit("antitank", 28, 15, 1)
+
+	    result.RefreshP1()
+	    result.RefreshP2()
+
+	    return result
+	}
+	if level == 1 {
+		tacai := NewTacticalAI([]string{"tank","infantry","infantry","infantry","antitank","antitank","antitank"}, 0)
+
+	    result := NewTacticalGame(tac_map_2, player_control, 2, tacai)
+
+	    result.AddUnit("infantry", 19, 25, 0)
+	    result.AddUnit("infantry", 17, 25, 0)
+	    result.AddUnit("infantry", 21, 25, 0)
+
+	    result.AddUnit("infantry", 17, 7, 2)
+	    result.AddUnit("tank", 19, 7, 2)
+	    result.AddUnit("antitank", 21, 7, 2)
+
+	    result.RefreshP1()
+	    result.RefreshP2()
+
+	    return result
+	}
+	if level == 2 {
+		tacai := NewTacticalAI([]string{"antitank","antitank","infantry","infantry","infantry","antitank","tank"}, 4)
+
+	    result := NewTacticalGame(tac_map_3, player_control, 3, tacai)
+
+	    result.AddUnit("tank", 22, 26, 0)
+
+	    result.AddUnit("infantry", 16, 9, 3)
+	    result.AddUnit("tank", 0, 29, 3)
+
+	    result.RefreshP1()
+	    result.RefreshP2()
+
+	    return result
+	}
+
+	return TacticalGame{}
 }

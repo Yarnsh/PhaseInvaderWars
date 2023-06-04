@@ -3,6 +3,7 @@ package main
 import (
     "github.com/hajimehoshi/ebiten/v2"
     "github.com/Yarnsh/hippo/animation"
+    "github.com/Yarnsh/hippo/audio"
     "math"
     "strconv"
 )
@@ -17,6 +18,11 @@ type BattleGame struct {
 	attacker_image, defender_image, portflip_image *ebiten.Image
 
 	time float64
+
+	played_move bool
+	shoots_played_d, shoots_played_a int
+	booms_played_d, booms_played_a int
+	deaths_played_d, deaths_played_a int
 }
 
 func NewBattleGame(a, d Unit, m TacticalMap) BattleGame {
@@ -49,6 +55,17 @@ func (g *BattleGame) Update() error {
     //1.5 second defense
     //0.5 second delay before end
 
+    if !g.played_move {
+    	if g.attacker_type == "infantry" {
+    		audio.Play("assets/sfx/marching.wav")
+    	} else if g.attacker_type == "tank" {
+    		audio.Play("assets/sfx/engine.wav")
+    	} else if g.attacker_type == "antitank" {
+    		audio.Play("assets/sfx/car.wav")
+    	}
+    	g.played_move = true
+    }
+
     return nil
 }
 func (g *BattleGame) Draw(screen *ebiten.Image) {
@@ -64,6 +81,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 3.0
 		}
 		g.DrawAttacker(200.0, 300.0, 0.0, ktime)
+		if g.shoots_played_a <= 0 && g.time > 0.5 + 0.0{
+			g.shoots_played_a += 1
+			if g.attacker_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_a <= 0 && g.time > ktime {
+			g.deaths_played_a += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_astr > 0.6 {
 		ktime := 10.0
@@ -71,6 +100,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 2.6
 		}
 		g.DrawAttacker(150.0, 350.0, 0.2, ktime)
+		if g.shoots_played_a <= 1 && g.time > 0.5 + 0.2{
+			g.shoots_played_a += 1
+			if g.attacker_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_a <= 1 && g.time > ktime {
+			g.deaths_played_a += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_astr > 0.4 {
 		ktime := 10.0
@@ -78,6 +119,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 2.2
 		}
 		g.DrawAttacker(250.0, 400.0, 0.4, ktime)
+		if g.shoots_played_a <= 2 && g.time > 0.5 + 0.4{
+			g.shoots_played_a += 1
+			if g.attacker_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_a <= 2 && g.time > ktime {
+			g.deaths_played_a += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_astr > 0.2 {
 		ktime := 10.0
@@ -85,6 +138,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 3.2
 		}
 		g.DrawAttacker(230.0, 450.0, 0.5, ktime)
+		if g.shoots_played_a <= 3 && g.time > 0.5 + 0.5{
+			g.shoots_played_a += 1
+			if g.attacker_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_a <= 3 && g.time > ktime {
+			g.deaths_played_a += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_astr > 0.0 {
 		ktime := 10.0
@@ -92,17 +157,41 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 2.2
 		}
 		g.DrawAttacker(170.0, 500.0, 0.7, ktime)
+		if g.shoots_played_a <= 4 && g.time > 0.5 + 0.7{
+			g.shoots_played_a += 1
+			if g.attacker_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_a <= 4 && g.time > ktime {
+			g.deaths_played_a += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 
 	if g.end_dstr > 0.0 {
 		if g.time > 2.1 {
 			battle_anims["boom"].Draw(g.attacker_image, 120, 500, 1.0, g.time - 2.1)
+			if g.booms_played_a <= 0 {
+				g.booms_played_a += 1
+				 audio.Play("assets/sfx/boom.wav")
+			}
 		}
 		if g.time > 2.4 {
 			battle_anims["boom"].Draw(g.attacker_image, 320, 530, 1.0, g.time - 2.4)
+			if g.booms_played_a <= 1 {
+				g.booms_played_a += 1
+				 audio.Play("assets/sfx/boom.wav")
+			}
 		}
 		if g.time > 2.7 {
 			battle_anims["boom"].Draw(g.attacker_image, 250, 590, 1.0, g.time - 2.7)
+			if g.booms_played_a <= 2 {
+				g.booms_played_a += 1
+				 audio.Play("assets/sfx/boom.wav")
+			}
 		}
 	}
 
@@ -113,6 +202,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 1.5
 		}
 		g.DrawDefender(200.0, 300.0, 0.0, ktime)
+		if g.shoots_played_d <= 0 && g.time > 2.0 + 0.0 && g.end_dstr > 0.8 {
+			g.shoots_played_d += 1
+			if g.defender_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_d <= 0 && g.time > ktime {
+			g.deaths_played_d += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_dstr > 0.6 {
 		ktime := 10.0
@@ -120,6 +221,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 1.1
 		}
 		g.DrawDefender(150.0, 350.0, 0.2, ktime)
+		if g.shoots_played_d <= 1 && g.time > 2.0 + 0.2 && g.end_dstr > 0.6 {
+			g.shoots_played_d += 1
+			if g.defender_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_d <= 1 && g.time > ktime {
+			g.deaths_played_d += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_dstr > 0.4 {
 		ktime := 10.0
@@ -127,6 +240,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 0.7
 		}
 		g.DrawDefender(250.0, 400.0, 0.4, ktime)
+		if g.shoots_played_d <= 2 && g.time > 2.0 + 0.4 && g.end_dstr > 0.4 {
+			g.shoots_played_d += 1
+			if g.defender_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_d <= 2 && g.time > ktime {
+			g.deaths_played_d += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_dstr > 0.2 {
 		ktime := 10.0
@@ -134,6 +259,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 1.2
 		}
 		g.DrawDefender(230.0, 450.0, 0.5, ktime)
+		if g.shoots_played_d <= 3 && g.time > 2.0 + 0.5 && g.end_dstr > 0.2 {
+			g.shoots_played_d += 1
+			if g.defender_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_d <= 3 && g.time > ktime {
+			g.deaths_played_d += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 	if g.start_dstr > 0.0 {
 		ktime := 10.0
@@ -141,16 +278,40 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 0.9
 		}
 		g.DrawDefender(170.0, 500.0, 0.7, ktime)
+		if g.shoots_played_d <= 4 && g.time > 2.0 + 0.7 && g.end_dstr > 0.0 {
+			g.shoots_played_d += 1
+			if g.defender_type == "infantry" {
+				audio.Play("assets/sfx/rapidshoot.wav")
+			} else {
+				audio.Play("assets/sfx/boom.wav")
+			}
+		}
+		if g.deaths_played_d <= 4 && g.time > ktime {
+			g.deaths_played_d += 1
+			audio.Play("assets/sfx/death.wav")
+		}
 	}
 
 	if g.time > 0.6 {
 		battle_anims["boom"].Draw(g.defender_image, 120, 500, 1.0, g.time - 0.6)
+		if g.booms_played_d <= 0 {
+			g.booms_played_d += 1
+			 audio.Play("assets/sfx/boom.wav")
+		}
 	}
 	if g.time > 0.9 {
 		battle_anims["boom"].Draw(g.defender_image, 320, 530, 1.0, g.time - 0.9)
+		if g.booms_played_d <= 1 {
+			g.booms_played_d += 1
+			 audio.Play("assets/sfx/boom.wav")
+		}
 	}
 	if g.time > 1.3 {
 		battle_anims["boom"].Draw(g.defender_image, 250, 590, 1.0, g.time - 1.3)
+		if g.booms_played_d <= 1 {
+			g.booms_played_d += 1
+			 audio.Play("assets/sfx/boom.wav")
+		}
 	}
 
     op.GeoM.Reset()

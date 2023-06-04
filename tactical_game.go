@@ -4,6 +4,7 @@ import (
     "github.com/hajimehoshi/ebiten/v2"
     "github.com/Yarnsh/hippo/input"
     "github.com/Yarnsh/hippo/utils"
+    "github.com/Yarnsh/hippo/audio"
     "math"
     "strconv"
     "fmt"
@@ -111,6 +112,7 @@ func (g *TacticalGame) AIUpdate() bool { // returns if the AI is done
             }
 
             g.AddUnit(next_unit, facpos.X, facpos.Y, g.p2_army)
+            audio.Play("assets/sfx/build.wav")
             g.p2_money -= costOfUnit(next_unit)
             g.ai.IncrementNextBuild()
             return false
@@ -259,6 +261,7 @@ func (g *TacticalGame) Update() error {
                 g.p1_units[g.selected_unit_idx].actions -= 1
             }
             g.mode = MODE_CURSOR
+            audio.Play("assets/sfx/cancel.wav")
             return nil
         }
     }
@@ -267,12 +270,14 @@ func (g *TacticalGame) Update() error {
 
     if g.mode == MODE_END_TURN_MENU {
         if g.player_input.IsActionJustPressed("up") || g.player_input.IsActionJustPressed("down") {
+            audio.Play("assets/sfx/click.wav")
             g.menu_selection += 1
             if g.menu_selection >= 2 {
                 g.menu_selection = 0
             }
         }
         if g.player_input.IsActionJustPressed("accept") {
+            audio.Play("assets/sfx/accept.wav")
             if g.menu_selection == 0 {
                 g.mode = MODE_AI_PLAYING
                 g.RefreshP2()
@@ -285,12 +290,14 @@ func (g *TacticalGame) Update() error {
 
     if g.mode == MODE_FACTORY_SELECT {
         if g.player_input.IsActionJustPressed("up"){
+            audio.Play("assets/sfx/click.wav")
             g.menu_selection -= 1
             if g.menu_selection < 0 {
                 g.menu_selection = 2
             }
         }
         if g.player_input.IsActionJustPressed("down"){
+            audio.Play("assets/sfx/click.wav")
             g.menu_selection += 1
             if g.menu_selection > 2 {
                 g.menu_selection = 0
@@ -300,18 +307,21 @@ func (g *TacticalGame) Update() error {
             if g.menu_selection == 0 {
                 if g.p1_money >= 1000 {
                     g.AddUnit("infantry", g.cx, g.cy, 0)
+                    audio.Play("assets/sfx/build.wav")
                     g.p1_money -= 1000
                     g.mode = MODE_CURSOR
                 }
             } else if g.menu_selection == 1 {
                 if g.p1_money >= 7000 {
                     g.AddUnit("tank", g.cx, g.cy, 0)
+                    audio.Play("assets/sfx/build.wav")
                     g.p1_money -= 7000
                     g.mode = MODE_CURSOR
                 }
             } else if g.menu_selection == 2 {
                 if g.p1_money >= 3000 {
                     g.AddUnit("antitank", g.cx, g.cy, 0)
+                    audio.Play("assets/sfx/build.wav")
                     g.p1_money -= 3000
                     g.mode = MODE_CURSOR
                 }
@@ -325,6 +335,7 @@ func (g *TacticalGame) Update() error {
             for idx, unit := range g.p1_units {
                 if unit.x == g.cx && unit.y == g.cy {
                     if unit.actions > 0 {
+                        audio.Play("assets/sfx/accept.wav")
                         if unit.actions > 1 {
                             g.mode = MODE_MOVE_SELECT
                         } else {
@@ -340,6 +351,7 @@ func (g *TacticalGame) Update() error {
 
             for _, fac_pos := range g.tacmap.p1_factories {
                 if fac_pos.X == g.cx && fac_pos.Y == g.cy {
+                    audio.Play("assets/sfx/accept.wav")
                     g.mode = MODE_FACTORY_SELECT
                     g.menu_selection = 0
                 }
@@ -347,6 +359,7 @@ func (g *TacticalGame) Update() error {
 
             return nil
         } else if g.player_input.IsActionJustPressed("cancel") {
+            audio.Play("assets/sfx/cancel.wav")
             g.mode = MODE_END_TURN_MENU
             g.menu_selection = 0
             return nil
@@ -359,6 +372,7 @@ func (g *TacticalGame) Update() error {
             moves := g.movemap.GetMoves(g.selected_unit)
             for _, node := range moves.nodes {
                 if node.pos.X == g.cx && node.pos.Y == g.cy {
+                    audio.Play("assets/sfx/accept.wav")
                     g.unit_move_path = append(node.shortest_path, node.pos)[1:]
                     g.mode = MODE_UNIT_MOVING
                     g.unit_move_start = g.time
@@ -385,6 +399,7 @@ func (g *TacticalGame) Update() error {
                             fmt.Println(astr, dstr)
                             // switch to attack animation mode here
                             g.mode = MODE_BATTLE
+                            audio.Play("assets/sfx/accept.wav")
                             g.current_battle = NewBattleGame(g.p1_units[g.selected_unit_idx], unit, g.tacmap)
 
                             g.p1_units[g.selected_unit_idx].strength = astr
@@ -425,6 +440,14 @@ func (g *TacticalGame) Update() error {
             }
             g.unit_move_path = g.unit_move_path[1:]
             g.unit_move_start = g.time
+
+            if g.selected_unit.which == "infantry" {
+                audio.Play("assets/sfx/marching.wav")
+            } else if g.selected_unit.which == "tank" {
+                audio.Play("assets/sfx/engine.wav")
+            } else if g.selected_unit.which == "antitank" {
+                audio.Play("assets/sfx/car.wav")
+            }
         }
 
         if len(g.unit_move_path) == 0 {
@@ -610,6 +633,7 @@ func (g *TacticalGame) MoveCursor(dx, dy int) {
     } else if g.cy >= tacMapHeight {
         g.cy = tacMapHeight-1
     }
+    audio.Play("assets/sfx/click.wav")
 }
 
 func (g TacticalGame) GetResult() (bool, bool) {
