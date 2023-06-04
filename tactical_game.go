@@ -21,6 +21,8 @@ const (
     MODE_ATTACK_SELECT = 4
     MODE_END_TURN_MENU = 5
     MODE_AI_PLAYING = 6
+    MODE_BATTLE = 7
+    MODE_BATTLE_AI = 8
 )
 
 type TacticalGame struct {
@@ -54,6 +56,8 @@ type TacticalGame struct {
     up_pressed, down_pressed, left_pressed, right_pressed float64
 
     menu_selection int
+
+    current_battle BattleGame
 
     game_over bool
     we_won bool
@@ -120,6 +124,9 @@ func (g *TacticalGame) AIUpdate() bool { // returns if the AI is done
                 astr, dstr := g.p2_units[g.ai_next_unit].CalculateDamage(unit, g.tacmap)
                 fmt.Println(astr, dstr)
                 // switch to attack animation mode here
+                g.mode = MODE_BATTLE_AI
+                g.current_battle = NewBattleGame(g.p2_units[g.ai_next_unit], unit, g.tacmap)
+
                 g.p2_units[g.ai_next_unit].strength = astr
                 if astr <= 0.0 {
                     g.p2_units = append(g.p2_units[:g.ai_next_unit], g.p2_units[g.ai_next_unit+1:]...)
@@ -377,6 +384,9 @@ func (g *TacticalGame) Update() error {
                             astr, dstr := g.selected_unit.CalculateDamage(unit, g.tacmap)
                             fmt.Println(astr, dstr)
                             // switch to attack animation mode here
+                            g.mode = MODE_BATTLE
+                            g.current_battle = NewBattleGame(g.p1_units[g.selected_unit_idx], unit, g.tacmap)
+
                             g.p1_units[g.selected_unit_idx].strength = astr
                             if astr <= 0.0 {
                                 g.p1_units = append(g.p1_units[:g.selected_unit_idx], g.p1_units[g.selected_unit_idx+1:]...)
@@ -387,7 +397,6 @@ func (g *TacticalGame) Update() error {
                             }
 
                             g.p1_units[g.selected_unit_idx].actions -= 1
-                            g.mode = MODE_CURSOR
 
                             return nil
                         }
@@ -430,10 +439,26 @@ func (g *TacticalGame) Update() error {
         return nil
     }
 
+    if g.mode == MODE_BATTLE || g.mode == MODE_BATTLE_AI {
+        g.current_battle.Update()
+        done_battle, _ := g.current_battle.GetResult()
+        if done_battle {
+            if g.mode == MODE_BATTLE {
+                g.mode = MODE_CURSOR
+            } else {
+                g.mode = MODE_AI_PLAYING
+            }
+        }
+    }
+
     return nil
 }
 func (g *TacticalGame) Draw(screen *ebiten.Image) {
-    // TODO
+    if g.mode == MODE_BATTLE || g.mode == MODE_BATTLE_AI {
+        g.current_battle.Draw(screen)
+        return
+    }
+
     g.tacmap.Draw(screen)
 
     if g.mode == MODE_UNIT_MOVING {
