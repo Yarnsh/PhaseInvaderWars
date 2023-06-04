@@ -25,6 +25,7 @@ var (
 
     player_control input.InputActionHandler
     ui_anims map[string]animation.Animation
+    basic_font []animation.Animation
 )
 
 type MetaGame struct {
@@ -43,7 +44,7 @@ func NewMetaGame() MetaGame {
     player_control.RegisterKeyboardAction("accept", ebiten.KeyN)
     player_control.RegisterKeyboardAction("cancel", ebiten.KeyM)
 
-    result.tac_game = NewTacticalGame(tac_map_1, player_control)
+    result.tac_game = NewTacticalGame(tac_map_1, player_control, 1)
 
     result.tac_game.AddUnit("infantry", 7, 13, 0)
     result.tac_game.AddUnit("tank", 7, 16, 0)
@@ -52,6 +53,9 @@ func NewMetaGame() MetaGame {
     result.tac_game.AddUnit("infantry", 23, 13, 1)
     result.tac_game.AddUnit("tank", 25, 16, 2)
     result.tac_game.AddUnit("antitank", 28, 15, 3)
+
+    result.tac_game.RefreshP1()
+    result.tac_game.RefreshP2()
 
     return result
 }
@@ -79,6 +83,7 @@ func main() {
     ebiten.SetWindowTitle("Invader Wars")
 
     ui_anims, _ = animation.LoadAnimationMap("assets/ui.json")
+    basic_font, _ = animation.NewFontAnimationMap("assets/font.png", 8, 15, 32, 23)
     InitTacMapData()
     InitUnitData()
 

@@ -7,17 +7,11 @@ import (
 
 type TacticalMap struct {
 	tiles [][]Tile
-}
 
-func CloneMap(tm TacticalMap) TacticalMap {
-	result := TacticalMap{}
-	for x := 0; x < tacMapWidth; x++ {
-		for y := 0; y < tacMapHeight; y++ {
-			result.tiles[x][y] = tm.tiles[x][y]
-		}
-	}
-
-	return result
+	p1_factories []utils.IntPair
+	p1_hq utils.IntPair
+	p2_factories []utils.IntPair
+	p2_hq utils.IntPair
 }
 
 func (t TacticalMap) Draw(target *ebiten.Image) {
@@ -28,12 +22,42 @@ func (t TacticalMap) Draw(target *ebiten.Image) {
 	}
 }
 
+func (t TacticalMap) GetMovableMap(game TacticalGame) TacticalMap{
+	map_slice := make([][]Tile, tacMapWidth)
+	for i := range map_slice {
+	    map_slice[i] = make([]Tile, tacMapHeight)
+	}
+    result := TacticalMap{
+    	tiles: map_slice,
+    }
+	for x := 0; x < tacMapWidth; x++ {
+		for y := 0; y < tacMapHeight; y++ {
+			result.tiles[x][y] = t.tiles[x][y]
+			for _, unit := range game.p1_units {
+				if unit.x == x && unit.y == y {
+					result.tiles[x][y].move_cost = -1
+					break
+				}
+			}
+			for _, unit := range game.p2_units {
+				if unit.x == x && unit.y == y {
+					result.tiles[x][y].move_cost = -1
+					break
+				}
+			}
+		}
+	}
+
+	return result
+}
+
 func (t TacticalMap) GetMoves(u Unit) SearchNodes {
 	nodes := SearchNodes{}
 	start_node := SearchNode{
 		pos: utils.IntPair{X: u.x, Y: u.y},
 		moves_left: u.GetMoves(),
 	}
+	nodes.nodes = append(nodes.nodes, start_node)
 
 	nposs, ncosts := start_node.GetNeighborsPositions(t.tiles)
 
@@ -105,6 +129,29 @@ func shouldSearchNeighbor(npos utils.IntPair, moves_left int, nodes SearchNodes)
 	return true, -1
 }
 
+func getAdjacentNodes(nodes SearchNodes) SearchNodes {
+	result := SearchNodes{}
+	for _, node := range nodes.nodes {
+		neigh := node.GetFakeNeighborNodes()
+		for _, neigh_n := range neigh {
+			if !isNodeInNodes(neigh_n, result) && !isNodeInNodes(neigh_n, nodes) {
+				result.nodes = append(result.nodes, neigh_n)
+			}
+		}
+	}
+
+	return result
+}
+
+func isNodeInNodes(node SearchNode, nodes SearchNodes) bool {
+	for _, n := range nodes.nodes {
+		if n.pos.X == node.pos.X && n.pos.Y == node.pos.Y {
+			return true
+		}
+	}
+	return false
+}
+
 type SearchNode struct {
 	pos utils.IntPair
 	moves_left int
@@ -140,6 +187,24 @@ func (n SearchNode) GetNeighborsPositions(tiles [][]Tile) ([]utils.IntPair, []in
 	}
 
 	return result, costs
+}
+
+func (n SearchNode) GetFakeNeighborNodes() ([]SearchNode) {
+	result := []SearchNode{}
+	if n.pos.X > 0 {
+		result = append(result, SearchNode{pos: utils.IntPair{X: n.pos.X - 1, Y: n.pos.Y}})
+	}
+	if n.pos.X < tacMapWidth - 1 {
+		result = append(result, SearchNode{pos: utils.IntPair{X: n.pos.X + 1, Y: n.pos.Y}})
+	}
+	if n.pos.Y > 0 {
+		result = append(result, SearchNode{pos: utils.IntPair{X: n.pos.X, Y: n.pos.Y - 1}})
+	}
+	if n.pos.Y < tacMapHeight - 1 {
+		result = append(result, SearchNode{pos: utils.IntPair{X: n.pos.X, Y: n.pos.Y + 1}})
+	}
+
+	return result
 }
 
 type SearchNodes struct {

@@ -17,11 +17,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 20,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_left_0": {
@@ -29,11 +29,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 40,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_down_0": {
@@ -41,11 +41,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 60,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_up_0": {
@@ -53,11 +53,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 80,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -78,11 +78,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 120,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_left_0": {
@@ -90,11 +90,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 140,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_down_0": {
@@ -102,11 +102,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 160,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_up_0": {
@@ -114,11 +114,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 180,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -139,11 +139,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 220,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_left_0": {
@@ -151,11 +151,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 240,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_down_0": {
@@ -163,11 +163,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 260,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_up_0": {
@@ -175,6 +175,43 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 280,
+			"length": 0.1,
+			"frames": {
+				"0.0": 0,
+				"0.05": 1,
+				"0.1": 0
+			}
+		},
+
+		"infantry_idle_0_done": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 300,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"tank_idle_0_done": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 320,
+			"length": 1.0,
+			"frames": {
+				"0.0": 0,
+				"0.5": 1,
+				"0.0": 0
+			}
+		},
+		"antitank_idle_0_done": {
+			"sheet_path": "lumi_army_tactical.png",
+			"frame_width": 20,
+			"frame_height": 20,
+			"frame_offset_y": 340,
 			"length": 1.0,
 			"frames": {
 				"0.0": 0,
@@ -202,11 +239,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 20,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_left_1": {
@@ -214,11 +251,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 40,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_down_1": {
@@ -226,11 +263,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 60,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_up_1": {
@@ -238,11 +275,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 80,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -263,11 +300,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 120,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_left_1": {
@@ -275,11 +312,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 140,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_down_1": {
@@ -287,11 +324,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 160,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_up_1": {
@@ -299,11 +336,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 180,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -324,11 +361,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 220,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_left_1": {
@@ -336,11 +373,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 240,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_down_1": {
@@ -348,11 +385,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 260,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_up_1": {
@@ -360,11 +397,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 280,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -387,11 +424,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 20,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_left_2": {
@@ -399,11 +436,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 40,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_down_2": {
@@ -411,11 +448,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 60,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_up_2": {
@@ -423,11 +460,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 80,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -448,11 +485,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 120,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_left_2": {
@@ -460,11 +497,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 140,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_down_2": {
@@ -472,11 +509,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 160,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_up_2": {
@@ -484,11 +521,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 180,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -509,11 +546,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 220,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_left_2": {
@@ -521,11 +558,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 240,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_down_2": {
@@ -533,11 +570,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 260,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_up_2": {
@@ -545,11 +582,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 280,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -572,11 +609,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 20,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_left_3": {
@@ -584,11 +621,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 40,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_down_3": {
@@ -596,11 +633,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 60,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"infantry_up_3": {
@@ -608,11 +645,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 80,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -633,11 +670,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 120,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_left_3": {
@@ -645,11 +682,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 140,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_down_3": {
@@ -657,11 +694,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 160,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"tank_up_3": {
@@ -669,11 +706,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 180,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 
@@ -694,11 +731,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 220,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_left_3": {
@@ -706,11 +743,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 240,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_down_3": {
@@ -718,11 +755,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 260,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		},
 		"antitank_up_3": {
@@ -730,11 +767,11 @@
 			"frame_width": 20,
 			"frame_height": 20,
 			"frame_offset_y": 280,
-			"length": 1.0,
+			"length": 0.1,
 			"frames": {
 				"0.0": 0,
-				"0.5": 1,
-				"0.0": 0
+				"0.05": 1,
+				"0.1": 0
 			}
 		}
 	}

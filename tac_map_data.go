@@ -2,6 +2,7 @@ package main
 
 import (
     "github.com/Yarnsh/hippo/animation"
+    "github.com/Yarnsh/hippo/utils"
     "strings"
     "io/fs"
 	"path/filepath"
@@ -154,23 +155,31 @@ func csvToTacticalMap(file_path string) TacticalMap {
 
     		case "0.4":
     			result.tiles[x][y] = TH0
+    			result.p1_hq = utils.IntPair{X: x, Y: y}
     		case "1.4":
     			result.tiles[x][y] = TF0
+    			result.p1_factories = append(result.p1_factories, utils.IntPair{X: x, Y: y})
 
     		case "0.5":
     			result.tiles[x][y] = TH1
+    			result.p2_hq = utils.IntPair{X: x, Y: y}
     		case "1.5":
     			result.tiles[x][y] = TF1
+    			result.p2_factories = append(result.p2_factories, utils.IntPair{X: x, Y: y})
 
     		case "0.6":
     			result.tiles[x][y] = TH2
+    			result.p2_hq = utils.IntPair{X: x, Y: y}
     		case "1.6":
     			result.tiles[x][y] = TF2
+    			result.p2_factories = append(result.p2_factories, utils.IntPair{X: x, Y: y})
 
     		case "0.7":
     			result.tiles[x][y] = TH3
+    			result.p2_hq = utils.IntPair{X: x, Y: y}
     		case "1.7":
     			result.tiles[x][y] = TF3
+    			result.p2_factories = append(result.p2_factories, utils.IntPair{X: x, Y: y})
 	    	}
 		}
     }

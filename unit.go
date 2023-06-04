@@ -35,13 +35,17 @@ func NewUnit(which string, x, y, army int) Unit {
 		y: y,
 		army: army,
 		strength: 1.0,
-
-		actions: 2, //TODO: should spawn with zero probably
 	}
 }
 
 func (u Unit) Draw(target *ebiten.Image, anim string, time float64) {
-	unit_animations[u.which + "_" + anim + "_" + strconv.Itoa(u.army)].Draw(target, float64(u.x) * tileSizeF + (tileSizeF / 2.0), float64(u.y) * tileSizeF + tileSizeF, 1.0, time)
+	done := ""
+
+	if u.army == 0 && u.actions <= 0 {
+		done = "_done"
+	}
+
+	unit_animations[u.which + "_" + anim + "_" + strconv.Itoa(u.army) + done].Draw(target, float64(u.x) * tileSizeF + (tileSizeF / 2.0), float64(u.y) * tileSizeF + tileSizeF, 1.0, time)
 
 	// TODO: draw strength number if < 1.0
 }
