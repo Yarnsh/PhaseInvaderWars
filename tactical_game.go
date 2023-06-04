@@ -5,8 +5,12 @@ import (
     "github.com/Yarnsh/hippo/input"
     "github.com/Yarnsh/hippo/utils"
     "github.com/Yarnsh/hippo/audio"
+    "github.com/hajimehoshi/ebiten/v2/audio/mp3"
+    eaudio "github.com/hajimehoshi/ebiten/v2/audio"
     "math"
     "strconv"
+    "io/fs"
+    "bytes"
     "fmt"
 )
 
@@ -62,15 +66,32 @@ type TacticalGame struct {
 
     game_over bool
     we_won bool
+    game_over_time float64
+
+    music *eaudio.Player
 }
 
-func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler, p2_army int, ai TacticalAI) TacticalGame {
+func (g *TacticalGame) Close() {
+    g.music.Close()
+}
+
+func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler, p2_army int, ai TacticalAI, musicpath string) TacticalGame {
+    dat, _ := fs.ReadFile(audio.FileSystem, musicpath)
+    s, _ := mp3.DecodeWithSampleRate(eaudio.CurrentContext().SampleRate(), bytes.NewReader(dat))
+    s2 := eaudio.NewInfiniteLoop(s, s.Length())
+    music, _ := eaudio.NewPlayer(eaudio.CurrentContext(), s2)
+
     result := TacticalGame{
         tacmap: tacmap,
         player_input: player_input,
         p2_army: p2_army,
         ai: ai,
+        music: music,
+        cx: 20,
+        cy: 15,
     }
+    result.music.SetVolume(0.6)
+    result.music.Play()
 
     return result
 }
@@ -192,6 +213,11 @@ func (g *TacticalGame) Update() error {
 
     g.time += 1.0/60.0
 
+    if g.time < 2.0 {
+        //start card
+        return nil
+    }
+
     if g.game_over {
         // some kinda end card probably
         return nil
@@ -202,12 +228,14 @@ func (g *TacticalGame) Update() error {
         if unit.x == g.tacmap.p2_hq.X && unit.y == g.tacmap.p2_hq.Y {
             g.game_over = true
             g.we_won = true
+            g.game_over_time = g.time
         }
     }
     for _, unit := range g.p2_units {
         if unit.x == g.tacmap.p1_hq.X && unit.y == g.tacmap.p1_hq.Y {
             g.game_over = true
             g.we_won = false
+            g.game_over_time = g.time
         }
     }
 
@@ -580,6 +608,20 @@ func (g *TacticalGame) Draw(screen *ebiten.Image) {
     if g.mode == MODE_FACTORY_SELECT {
         drawFactoryPrompt(screen, g.menu_selection, g.p1_money)
     }
+
+
+    if g.time < 2.0 {
+        //start card
+        ui_anims["tacstart"].Draw(screen, 400, 600, 1.0, g.time)
+    }
+
+    if g.game_over {
+        if g.we_won {
+            ui_anims["tacwin"].Draw(screen, 400, 600, 1.0, g.time - g.game_over_time)
+        } else {
+            ui_anims["taclose"].Draw(screen, 400, 600, 1.0, g.time - g.game_over_time)
+        }
+    }
 }
 
 func drawUnitStr(screen *ebiten.Image, unit Unit) {
@@ -637,7 +679,7 @@ func (g *TacticalGame) MoveCursor(dx, dy int) {
 }
 
 func (g TacticalGame) GetResult() (bool, bool) {
-    return g.game_over, g.we_won
+    return g.game_over && g.time > g.game_over_time + 2.0, g.we_won
 }
 
 func drawEndTurnPrompt(screen *ebiten.Image, selection int) {

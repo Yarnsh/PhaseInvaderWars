@@ -1,5 +1,53 @@
 {
 	"animations": {
+		"tacstart": {
+			"sheet_path": "tacstart.png",
+			"frame_width": 800,
+			"frame_height": 600,
+			"frame_offset_y": 0,
+			"length": 2.0,
+			"frames": {
+				"0.0": 0
+			},
+			"x_offsets": {
+				"0.0": -800,
+				"0.5": 0,
+				"1.5": 0,
+				"2.0": 800
+			}
+		},
+		"tacwin": {
+			"sheet_path": "tacwin.png",
+			"frame_width": 800,
+			"frame_height": 600,
+			"frame_offset_y": 0,
+			"length": 2.0,
+			"frames": {
+				"0.0": 0
+			},
+			"x_offsets": {
+				"0.0": -800,
+				"0.5": 0,
+				"1.5": 0,
+				"2.0": 800
+			}
+		},
+		"taclose": {
+			"sheet_path": "taclose.png",
+			"frame_width": 800,
+			"frame_height": 600,
+			"frame_offset_y": 0,
+			"length": 2.0,
+			"frames": {
+				"0.0": 0
+			},
+			"x_offsets": {
+				"0.0": -800,
+				"0.5": 0,
+				"1.5": 0,
+				"2.0": 800
+			}
+		},
 		"vnbg": {
 			"sheet_path": "textbox.png",
 			"frame_width": 800,

@@ -5,6 +5,10 @@ import (
     "github.com/Yarnsh/hippo/input"
     "github.com/Yarnsh/hippo/audio"
     "strconv"
+    eaudio "github.com/hajimehoshi/ebiten/v2/audio"
+    "github.com/hajimehoshi/ebiten/v2/audio/mp3"
+    "io/fs"
+    "bytes"
 )
 
 const (
@@ -24,13 +28,22 @@ type CampaignGame struct {
 	current_battle TacticalGame
 	flip_img *ebiten.Image
 	text_drawn int
+
+    music *eaudio.Player
 }
 
 func NewCampaign(stages []Stage, player input.InputActionHandler) CampaignGame {
+	dat, _ := fs.ReadFile(audio.FileSystem, "assets/music/VNMusic.mp3")
+    s, _ := mp3.DecodeWithSampleRate(eaudio.CurrentContext().SampleRate(), bytes.NewReader(dat))
+    s2 := eaudio.NewInfiniteLoop(s, s.Length())
+    music, _ := eaudio.NewPlayer(eaudio.CurrentContext(), s2)
+    music.Play()
+
 	return CampaignGame{
 		player: player,
 		flip_img: ebiten.NewImage(800, 600),
 		stages: stages,
+		music: music,
 	}
 }
 
@@ -137,6 +150,19 @@ func (g *CampaignGame) NextStage() {
 	if g.current_stage + 1 >= len(g.stages) {
 		return
 	}
+
+	if g.stages[g.current_stage].is_battle && !g.stages[g.current_stage+1].is_battle {
+		g.music.Rewind()
+		g.music.Play()
+	}
+	if !g.stages[g.current_stage].is_battle && g.stages[g.current_stage+1].is_battle {
+		g.music.Pause()
+	}
+
+	if g.stages[g.current_stage].is_battle {
+		g.current_battle.music.Close()
+	}
+
 	g.current_stage += 1
 	if g.stages[g.current_stage].is_battle {
 		g.current_battle = CreateTacticalGame(g.stages[g.current_stage].level, g.player)
@@ -146,6 +172,18 @@ func (g *CampaignGame) NextStage() {
 }
 
 func (g *CampaignGame) JumpToStage(stage int) {
+	if g.stages[g.current_stage].is_battle {
+		g.current_battle.music.Close()
+	}
+	
+	if g.stages[g.current_stage].is_battle && !g.stages[stage].is_battle {
+		g.music.Rewind()
+		g.music.Play()
+	}
+	if !g.stages[g.current_stage].is_battle && g.stages[stage].is_battle {
+		g.music.Pause()
+	}
+
 	g.current_stage = stage
 	if g.stages[g.current_stage].is_battle {
 		g.current_battle = CreateTacticalGame(g.stages[g.current_stage].level, g.player)

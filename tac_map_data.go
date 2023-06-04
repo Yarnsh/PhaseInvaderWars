@@ -192,7 +192,7 @@ func CreateTacticalGame(level int, player_control input.InputActionHandler) Tact
 	if level == 0 {
 		tacai := NewTacticalAI([]string{"infantry","infantry","infantry","antitank","tank"}, 2)
 
-	    result := NewTacticalGame(tac_map_1, player_control, 1, tacai)
+	    result := NewTacticalGame(tac_map_1, player_control, 1, tacai, "assets/music/JellyTheme.mp3")
 
 	    result.AddUnit("infantry", 7, 13, 0)
 	    result.AddUnit("tank", 14, 16, 0)
@@ -210,7 +210,7 @@ func CreateTacticalGame(level int, player_control input.InputActionHandler) Tact
 	if level == 1 {
 		tacai := NewTacticalAI([]string{"tank","infantry","infantry","infantry","antitank","antitank","antitank"}, 0)
 
-	    result := NewTacticalGame(tac_map_2, player_control, 2, tacai)
+	    result := NewTacticalGame(tac_map_2, player_control, 2, tacai, "assets/music/DizzyTheme.mp3")
 
 	    result.AddUnit("infantry", 19, 25, 0)
 	    result.AddUnit("infantry", 17, 25, 0)
@@ -228,7 +228,7 @@ func CreateTacticalGame(level int, player_control input.InputActionHandler) Tact
 	if level == 2 {
 		tacai := NewTacticalAI([]string{"antitank","antitank","infantry","infantry","infantry","antitank","tank"}, 4)
 
-	    result := NewTacticalGame(tac_map_3, player_control, 3, tacai)
+	    result := NewTacticalGame(tac_map_3, player_control, 3, tacai, "assets/music/EmberTheme.mp3")
 
 	    result.AddUnit("tank", 22, 26, 0)
 
