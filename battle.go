@@ -201,13 +201,13 @@ func (g BattleGame) DrawDefender(xoff, yoff, toff, ktime float64) {
 	das := strconv.Itoa(g.defender_army)
 
 	if g.time > ktime {
-		battle_anims[das + "_" + g.attacker_type + "_die"].Draw(g.defender_image, xoff, yoff, 1.0, g.time - ktime)
+		battle_anims[das + "_" + g.defender_type + "_die"].Draw(g.defender_image, xoff, yoff, 1.0, g.time - ktime)
 	} else if g.time - toff > 2.0 && g.time - toff < 3.0 {
 		//attack
-		battle_anims[das + "_" + g.attacker_type + "_shoot"].Draw(g.defender_image, xoff, yoff, 1.0, g.time - toff - 2.0)
+		battle_anims[das + "_" + g.defender_type + "_shoot"].Draw(g.defender_image, xoff, yoff, 1.0, g.time - toff - 2.0)
 	} else {
 		// idle
-		battle_anims[das + "_" + g.attacker_type + "_idle"].Draw(g.defender_image, xoff, yoff, 1.0, g.time)
+		battle_anims[das + "_" + g.defender_type + "_idle"].Draw(g.defender_image, xoff, yoff, 1.0, g.time)
 	}
 }
 
