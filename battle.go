@@ -94,6 +94,18 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 		g.DrawAttacker(170.0, 500.0, 0.7, ktime)
 	}
 
+	if g.end_dstr > 0.0 {
+		if g.time > 2.1 {
+			battle_anims["boom"].Draw(g.attacker_image, 120, 500, 1.0, g.time - 2.1)
+		}
+		if g.time > 2.4 {
+			battle_anims["boom"].Draw(g.attacker_image, 320, 530, 1.0, g.time - 2.4)
+		}
+		if g.time > 2.7 {
+			battle_anims["boom"].Draw(g.attacker_image, 250, 590, 1.0, g.time - 2.7)
+		}
+	}
+
 	// defender things
 	if g.start_dstr > 0.8 {
 		ktime := 10.0
@@ -129,6 +141,16 @@ func (g *BattleGame) Draw(screen *ebiten.Image) {
 			ktime = 0.9
 		}
 		g.DrawDefender(170.0, 500.0, 0.7, ktime)
+	}
+
+	if g.time > 0.6 {
+		battle_anims["boom"].Draw(g.defender_image, 120, 500, 1.0, g.time - 0.6)
+	}
+	if g.time > 0.9 {
+		battle_anims["boom"].Draw(g.defender_image, 320, 530, 1.0, g.time - 0.9)
+	}
+	if g.time > 1.3 {
+		battle_anims["boom"].Draw(g.defender_image, 250, 590, 1.0, g.time - 1.3)
 	}
 
     op.GeoM.Reset()

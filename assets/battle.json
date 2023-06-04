@@ -1,5 +1,21 @@
 {
 	"animations": {
+		"boom": {
+			"sheet_path": "boom.png",
+			"frame_width": 150,
+			"frame_height": 150,
+			"frame_offset_y": 0,
+			"length": 10.0,
+			"frames": {
+				"0.0": 0,
+				"0.2": 1,
+				"0.5": 2,
+				"0.9": 3
+			}
+		},
+
+
+
 		"0_infantry_idle": {
 			"sheet_path": "lumi_infantry.png",
 			"frame_width": 150,
