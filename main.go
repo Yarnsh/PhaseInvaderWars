@@ -44,7 +44,9 @@ func NewMetaGame() MetaGame {
     player_control.RegisterKeyboardAction("accept", ebiten.KeyN)
     player_control.RegisterKeyboardAction("cancel", ebiten.KeyM)
 
-    result.tac_game = NewTacticalGame(tac_map_1, player_control, 1)
+    tacai := NewTacticalAI([]string{"infantry","infantry","infantry","antitank","tank"}, 2)
+
+    result.tac_game = NewTacticalGame(tac_map_1, player_control, 1, tacai)
 
     result.tac_game.AddUnit("infantry", 7, 13, 0)
     result.tac_game.AddUnit("tank", 7, 16, 0)
@@ -61,9 +63,9 @@ func NewMetaGame() MetaGame {
 }
 func (g *MetaGame) Update() error {
     err := g.tac_game.Update()
-    finished, _ := g.tac_game.GetResult()
+    finished, victory := g.tac_game.GetResult()
     if finished { // test until we get VN stuff going
-        fmt.Println("Game Over!")
+        fmt.Println("Game Over!", victory)
         os.Exit(0)
     }
     return err

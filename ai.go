@@ -11,6 +11,13 @@ type TacticalAI struct {
 	next_build int
 }
 
+func NewTacticalAI(build_order []string, build_repeat_idx int) TacticalAI {
+	return TacticalAI{
+		build_order: build_order,
+		build_repeat_idx: build_repeat_idx,
+	}
+}
+
 func (ai TacticalAI) GetNextBuild() string {
 	if len(ai.build_order) > 0 {
 		return ai.build_order[ai.next_build]

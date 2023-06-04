@@ -54,13 +54,17 @@ type TacticalGame struct {
     up_pressed, down_pressed, left_pressed, right_pressed float64
 
     menu_selection int
+
+    game_over bool
+    we_won bool
 }
 
-func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler, p2_army int) TacticalGame {
+func NewTacticalGame(tacmap TacticalMap, player_input input.InputActionHandler, p2_army int, ai TacticalAI) TacticalGame {
     result := TacticalGame{
         tacmap: tacmap,
         player_input: player_input,
         p2_army: p2_army,
+        ai: ai,
     }
 
     return result
@@ -104,6 +108,7 @@ func (g *TacticalGame) AIUpdate() bool { // returns if the AI is done
 
             g.AddUnit(next_unit, facpos.X, facpos.Y, g.p2_army)
             g.p2_money -= costOfUnit(next_unit)
+            g.ai.IncrementNextBuild()
             return false
         }
 
@@ -177,6 +182,25 @@ func (g *TacticalGame) Update() error {
     g.movemap = g.tacmap.GetMovableMap(*g)
 
     g.time += 1.0/60.0
+
+    if g.game_over {
+        // some kinda end card probably
+        return nil
+    }
+
+    // check for win/loss
+    for _, unit := range g.p1_units {
+        if unit.x == g.tacmap.p2_hq.X && unit.y == g.tacmap.p2_hq.Y {
+            g.game_over = true
+            g.we_won = true
+        }
+    }
+    for _, unit := range g.p2_units {
+        if unit.x == g.tacmap.p1_hq.X && unit.y == g.tacmap.p1_hq.Y {
+            g.game_over = true
+            g.we_won = false
+        }
+    }
 
     if g.mode == MODE_AI_PLAYING {
         if g.AIUpdate() {
@@ -564,8 +588,7 @@ func (g *TacticalGame) MoveCursor(dx, dy int) {
 }
 
 func (g TacticalGame) GetResult() (bool, bool) {
-    // TODO
-    return false, false
+    return g.game_over, g.we_won
 }
 
 func drawEndTurnPrompt(screen *ebiten.Image, selection int) {
