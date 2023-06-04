@@ -283,7 +283,7 @@ func (g *TacticalGame) Update() error {
         }
     }
 
-    if g.mode != MODE_CURSOR && g.mode != MODE_UNIT_MOVING {
+    if g.mode != MODE_CURSOR && g.mode != MODE_UNIT_MOVING && g.mode != MODE_BATTLE && g.mode != MODE_BATTLE_AI {
         if g.player_input.IsActionJustPressed("cancel") {
             if g.mode == MODE_ATTACK_SELECT {
                 g.p1_units[g.selected_unit_idx].actions -= 1
